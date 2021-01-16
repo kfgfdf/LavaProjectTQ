@@ -35,6 +35,14 @@ public class CharacterControll : MonoBehaviour
 
     void Update()
     {
+        if(myAgent.hasPath)
+        {
+            float m = Mathf.Clamp01(controllSpeed.speedCharacter);
+            anim.SetFloat("Blend", m, 0.15f, Time.deltaTime);
+        }
+        else
+            anim.SetFloat("Blend", 0);
+
         if(anim.GetBool("isTower") && anim.GetBool("isZombie"))
             isAiming = true;
         else
