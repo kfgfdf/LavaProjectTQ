@@ -40,8 +40,12 @@ public class CharacterControll : MonoBehaviour
             float m = Mathf.Clamp01(controllSpeed.speedCharacter);
             anim.SetFloat("Blend", m, 0.15f, Time.deltaTime);
         }
-        else
+        //else
+        //    anim.SetFloat("Blend", 0);
+        Vector3 dis = myAgent.destination - transform.position;
+        if(dis.sqrMagnitude <= 0.3f)
             anim.SetFloat("Blend", 0);
+
 
         if(anim.GetBool("isTower") && anim.GetBool("isZombie"))
             isAiming = true;
